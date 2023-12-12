@@ -713,7 +713,7 @@ a un padding y bordes algo redondeados */
 
   .respmenu input[type="checkbox"] {
     position: absolute;
-    top: 4.5rem;
+    top: 3.5rem;
     width: 2rem;
     height: 2rem;
     opacity: 0;
