@@ -1,0 +1,836 @@
+/* Importación de fuentes */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+@font-face {
+  font-family: Contenido;
+  src: url(../fuentes/Roboto-Light.ttf);
+  font-weight: 300;
+}
+
+/* Declaración de varibales para color y fuente */
+:root {
+  --color-fondo: rgb(0, 51, 102);
+  --color-contenido: rgb(255, 255, 255);
+  --color-acciones: rgba(153, 255, 102, 0.5);
+  --color-extra: rgb(0, 0, 0);
+
+  --fuente-contenido: Contenido;
+  --fuente-titulos: Montserrat;
+}
+
+/* Configuración general, por defecto le pongo que todo el contenido tenga la fuente
+de contenido y en los encabezados ya le especificaré que use la de encabezados */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--fuente-contenido), Arial, Helvetica, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* A lo largo del documento se usarán medidas relativas, como % y rem. rem viene de Root EM,
+y lo que viene haciendo es que substrae el font-size del elemento root que en este caso será 
+la etique <html>. 1rem será igual 16px en este caso. */
+
+/* Se aplica la fuente a todos los titulos que voy a utilizar a lo largo de la web */
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabecera */
+/* Disposición flex en el que los bloques estarán tendran el mismo espacio entre ellos */
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--color-fondo);
+  color: var(--color-contenido);
+  padding: 5px 10px;
+}
+
+/* Primera zona del header se define con flex para centrar horizontal y verticalmente su contenido
+el cual es el nombre de la empresa y la imagen del producto destacado */
+#header-zona1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Se define tamaño relativo de la imagen en comparación con su tamaño real */
+#header-zona1 > img {
+  width: 20%;
+}
+
+/* Segunda zona del header con disposición flex centrando su contenido horizontalmente
+el cual es la imagen */
+#header-zona2 {
+  display: flex;
+  justify-content: center;
+}
+
+/* Se define tamaño relativo del logo en comparación con su tamaño real */
+#header-zona2 > img {
+  width: 20%;
+}
+
+/* Tercera zona del header se define como flex con disposicion en linea y el mismo espacio entre
+los elementos los cuales son dos botones */
+#header-zona3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Estilos para los botones, cambiandole el color de fondo y añadiendole un redondeo a los bordes */
+#header-zona3 > button {
+  margin: 0 10px;
+  width: 8rem;
+  height: 2rem;
+  color: var(--color-contenido);
+  background: none;
+  border-radius: 0.5rem;
+}
+
+/* Acción para cambiar el color de fondo del botón al pasar el ratón por encima */
+#header-zona3 > button:hover {
+  background-color: var(--color-acciones);
+}
+
+/* Zona de navegación con disposición flex con los elementos en linea y centrados tanto horizontal como
+verticalmente junto a una separacion entre ellos */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  height: 2rem;
+  border: 1px solid var(--color-extra);
+  background-color: var(--color-fondo);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enlaces del menu */
+
+nav ul li a {
+  display: block;
+  color: var(--color-contenido);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+
+/* items del menu */
+
+nav ul li {
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+/* Efecto al pasar el ratón por los items del menu */
+
+nav ul a:hover {
+  color: var(--color-acciones);
+}
+
+nav ul a::first-letter {
+  text-decoration: underline;
+}
+
+/* Menu desplegable */
+
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: green;
+  padding: 0;
+}
+
+/* Items del menu desplegable */
+
+nav ul ul li {
+  float: none;
+  width: 10rem;
+}
+
+/* Enlaces de los items del menu desplegable */
+
+nav ul ul a {
+  line-height: 120%;
+  padding: 0.5rem 1rem;
+}
+
+/* Items del menu desplegable al pasar el ratón */
+
+nav ul li:hover ul, nav ul li:focus ul {
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 4rem;
+}
+
+/* Estilos para menú hamburguesa */
+
+.respmenu a {
+  text-decoration: none;
+  color: white;
+}
+
+.respmenu input[type="checkbox"],
+.respmenu .abrir,
+.respmenu .cerrar {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  left: 0.5rem;
+  top: -1rem;
+  width: 2rem;
+  display: none;
+}
+
+.respmenu .abrir, .respmenu .cerrar {
+  pointer-events: none;
+}
+
+
+/* Zona de contenido */
+/* Disposición flex con dirección de columna para envolver las dos zonas de contenido */
+main {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Estilos migas de pan en formato lista */
+
+#migas {
+  align-self: start;
+  margin-left: 5%;
+  font-family: var(--fuente-titulos);
+}
+
+#migas > ol {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: var(--color-fondo);
+  border-radius: 0.5rem;
+}
+
+#migas li {
+  display: inline;
+  font-size: 18px;
+  color: var(--color-contenido);
+}
+
+#migas li + li:before {
+  padding: 0.5rem;
+  content: ">>";
+}
+
+
+/* Zona de contenido 1 */
+/* Para la primera zona de contenido que contendrá un 2x2 con un elemento de mayor ancho he optado
+por una disposición grid de 3 columnas y 2 filas. El ancho de la zona será del 80% del total */
+#main-zona1 {
+  width: 90%;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 50%;
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 0.5rem;
+}
+
+/* Se aplica a todas las secciones de esta zona el color de fondo, un padding para que el contenido no
+se encuentre pegado al borde y se redondean un poco los bordes */
+#main-zona1 > section {
+  background-color: var(--color-fondo);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Se posiciona la sección de productos, que irá desde la primera linea hasta la 3 y ocupara la primea fila de ancho */
+#productos {
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+/* Se le aplica color a el encabezado de la sección */
+#productos > h2 {
+  color: var(--color-contenido);
+}
+
+/* Se le aplica una disposición flex al contenedor que contiene las tarjetas de los productos, pudiendo ocupar varias lineas */
+#contenedor-productos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}
+
+/* La clase de productos aplica el estilo de las tarjetas, siendo a su vez una disposición flex para el contenido de su interior */
+.productos {
+  margin-top: 2%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-contenido);
+  border-radius: 0.5rem;
+  padding: 1%;
+}
+
+/* Tamaño relativo de la imagen de producto y el borde con el redondeado para ser un ciruculo */
+.productos > img {
+  width: 80%;
+  border: 3px solid var(--color-extra);
+  border-radius: 50%;
+}
+
+/* Posicionmiento de la sección de tabla de productos dentro del grid, ocupando la posición desde la linea 3 a 4 de columna
+y la primera fila */
+#tabla-productos {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 5%;
+  color: var(--color-contenido);
+}
+
+/* Se alinea el segundo div dentro de la sección el cual contiene la tabla */
+#tabla-productos > div:last-child {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos de la tabla */
+#tabla-productos > div > table {
+  width: 100%;
+  text-align: center;
+}
+
+/* Estilo para contenido de tabla cebreado */
+#tabla-productos tbody > tr:nth-child(odd) {
+  background-color: var(--color-extra);
+}
+
+/* Posicionamiento de la sección de producto destacado dentro del grid, ocupando de columnas desde la primera linea 
+a la segunda, estando en la segunda fila. Esta sección será menos ancha que las demás, ya que la siguiente será más
+ancha que las demás. Tendra una disposición flex con dirección de columna para su contenido interior */
+#producto-destacado {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-contenido);
+}
+
+/* Se alinea el segundo div dentro de la sección el cual contiene la información del producto */
+#contenido-p-destacado {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Se define tamaño relativo del logo en comparación con su tamaño real */
+#contenido-p-destacado > img {
+  width: 50%;
+}
+
+/* Se justifica el texto del producto destacado y se le aplica un ancho del 50% */
+#contenido-p-destacado > p {
+  width: 50%;
+  text-align: justify;
+}
+
+/* Se centra el precio y se le aumenta el tamaño de fuente */
+#contenido-p-destacado > #precio {
+  text-align: center;
+  font-size: larger;
+}
+
+/* Con un span se hace más chico el precio anterior y se tacha para simular rebaja */
+#precio > span {
+  font-size: small;
+  text-decoration: line-through;
+}
+
+/* Posicionamiento de la sección de empresas dentro del grid, ocupando de columnas desde la segunda linea 
+a la cuarta, estando en la segunda fila. Esta sección será más ancha que las demás. */
+#empresas {
+  color: var(--color-contenido);
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+/* Se le aplica una disposición flex al contenedor que contiene las tarjetas de las empresas, pudiendo ocupar varias lineas */
+#contenedor-empresas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo de la tarjeta de las empresas */
+.empresas {
+  margin-top: 2%;
+  padding: 1rem;
+  border: 1px solid var(--color-extra);
+  background-color: var(--color-contenido);
+  border-radius: 0.5rem;
+  width: 45%;
+  color: var(--color-extra);
+  box-shadow: -5px 5px 3px grey;
+}
+
+/* Se indica las imageés de empresas que va a tener cada bloque */
+#empresa1 {
+  background-image: url(../imgs/empresas/empresa1.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#empresa2 {
+  background-image: url(../imgs/empresas/empresa2.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#empresa3 {
+  background-image: url(../imgs/empresas/empresa3.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#empresa4 {
+  background-image: url(../imgs/empresas/empresa4.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Contenedor de iamgenes de empresas junto a producto */
+.imagenes-empresas {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Anchura del contenedor de la imagen de empresa y nombre */
+.empresa-info {
+  width: 50%;
+}
+
+/* Div que contiene de fondo la imagen de empresa y el texto que aparecerá al pasar por encima el ratón,
+y con flex se centra */
+.cont-empresa {
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para el texto que por defecto está oculto y cuando se pase el ratón por encima aparecerá */
+.cont-empresa > span {
+  visibility: hidden;
+  font-weight: 900;
+  background-color: var(--color-fondo);
+  color: var(--color-contenido);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* Acción al pasar por encima de la empresa le aplica un filtro */
+.cont-empresa:hover {
+  filter: hue-rotate(90deg);
+}
+
+/* Acción al pasar por encima de la empresa hace visible el texto y se contrarresta el filtro para
+que no se le aplique también a este texto */
+.cont-empresa:hover > span {
+  visibility: visible;
+  filter: hue-rotate(-90deg);
+}
+
+/* Contenedor del producto que usa la empresa, junto a imagen y nombre de producto */
+.producto-empresa {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Tamaño relativo del producto igual al de la empresa */
+.producto-empresa > img {
+  width: 7rem;
+}
+
+/* Zona de contenido 2 */
+/* La segunda zona de contenido tiene de anchura el 80% del total al igual que la zona 1. Com disposición flex */
+#main-zona2 {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Estilos para la cabecera de la sección de la noticia de la semana */
+#main-zona2 > section > header {
+  border-radius: 0.5rem;
+  column-span: all;
+  margin-bottom: 2%;
+}
+
+/* Configuración para mostrar los párrafos de la sección en dos columas con separador */
+#main-zona2 > section {
+  column-count: 2;
+  column-gap: 30px;
+  column-fill: balance;
+  column-rule: var(--color-fondo) solid 3px;
+}
+
+/* Se aplica a las primeras letras de los párafos las letras capitales y se aumenta la fuente */
+#main-zona2 > section > p::first-letter {
+  font-size: 2rem;
+}
+
+/* Contenedor de las imegenes de la noticia */
+#imagenes-noticia {
+  margin-top: 2%;
+  column-span: all;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Tamaño relativo para las imágenes de la notia */
+#imagenes-noticia > img {
+  width: 40%;
+}
+
+/* Footer */
+/* Disposición flex del footer */
+footer {
+  border-top: 2px solid var(--color-extra);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+/* Para todos los contenedores del footer se le aplica color para el texto y el fondo, jutno a un tamaña
+de ancho relativo y un padding para que el contenido no esté pegado a los bordses */
+footer > div {
+  background-color: var(--color-fondo);
+  color: var(--color-contenido);
+  width: 31%;
+  padding: 2rem;
+}
+
+/* En la primera zona del footer (izquierda) se cuenta con una disposición flex, con una dirección en columna */
+#footer-zona1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Disposición flex en columna para el contenedor que contiene los checkbox */
+#footer-zona1 > div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+/* Clase de los checkbox que se le aplica un padding para que no tengan el perfil pegado al pasar por encima el ratón */
+.check-cookies {
+  padding: 2%;
+}
+
+/* Acción al pasar por encima el ratón de un checkbox que aparezca un perfil */
+.check-cookies:hover {
+  outline: solid var(--color-contenido);
+}
+
+/* En la segunda zonca de footer (centro) nos encontramos una disposición flex con dirección columna y los elementos
+centrados verticalmente que al pasar a columna los veriamos como si se alinearan horizontalmente con 'align-items' y
+con un espaciado igual entre ellos contando los laterales (en este caso arriba y abajo al tener direcciín columna) */
+#footer-zona2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Estilo de las viletas de cuadradas */
+#footer-zona2 ul {
+  list-style: square;
+}
+
+/* Al pasar por encima de un elemento de la lista se cambia el color de la letra */
+#footer-zona2 li:hover {
+  color: var(--color-acciones);
+}
+
+/* En la tercera zona del footer (derecha) se cuenta con una disposición flex en columna con los elementos centrados */
+#footer-zona3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor que cuenta con las imágenes de las redes sociales, con disposición flex y todos sus elementos centrados 
+horizontal y verticalmente */
+.red-social {
+  margin-top: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Estilos para las imagenes que se encuentran dentro de este contenedor, en el que se le aplica un tamaño relarivo junto 
+a un padding y bordes algo redondeados */
+.red-social img {
+  width: 13%;
+  padding: 0.5rem;
+  border: 4px solid var(--color-contenido);
+  border-radius: 25%;
+}
+
+/* Al pasar por encima de alguna imagen el fondo y el borde cambiarán de color */
+.red-social img:hover {
+  border-color: var(--color-acciones);
+  background-color: var(--color-contenido);
+}
+
+/* Media quey para dispositivos móviles */
+@media (max-width: 620px) {
+  /* Cabecera */
+  /* En la cabecera se elimiará la primera zona, que conitene el producto destacado, por completo para que no ocupe espacio */
+  #header-zona1 {
+    display: none;
+  }
+
+  /* Se reajusta la iamgen del logo */
+  #header-zona2 > img {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* En la tercera se reajusta el ancho total de la zona */
+  #header-zona3 {
+    width: 50%;
+  }
+
+  /* Y se pone auto el alto de los botones y que no sobresalga el texto */
+  #header-zona3 > button {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  /* Navegación */
+  /* La navegación pasará a estar en columna con un menú hamburguesa */
+
+  #submenu {
+    width: 100%;
+    background-color: green;
+    border: 2px solid black;
+    z-index: 2;
+  }
+
+  .respmenu input[type="checkbox"],
+  .respmenu .abrir,
+  .respmenu .cerrar {
+    display: block;
+  }
+
+  .respmenu {
+    background-color: var(--color-fondo);
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .respmenu input[type="checkbox"] {
+    position: absolute;
+    top: 4.5rem;
+    width: 2rem;
+    height: 2rem;
+    opacity: 0;
+  }
+
+  .respmenu input:checked ~ nav {
+    display: block;
+    height: auto;
+  }
+
+  .respmenu input:checked ~ nav ul {
+    margin-top: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: none;
+  }
+
+  .respmenu input:checked ~ .abrir {
+    display: none;
+  }
+
+  .respmenu input:not(:checked) ~ .cerrar {
+    display: none;
+  }
+
+  /* Se empequeñece el texto de las migas de pan */
+  #migas li {
+    font-size: 0.8rem;
+  }
+
+  /* Zona de contenido 1 */
+  /* Desaparecen por completo las secciones de tabla de productos y empresas */
+  #tabla-productos,
+  #empresas {
+    display: none;
+  }
+
+  /* La sección de productos pasará a tomar todo el ancho de la primera fila */
+  #productos {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  /* El contenedor de productos ahora tendrá dirección en columna */
+  #contenedor-productos {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Las tarjetas de los productos ahora tomarán el 50% de ancho del contenedor */
+  .productos {
+    width: 50%;
+  }
+
+  /* Y se eliminarán todas las tarjetas a partir de la cuarta, y solo quedarán los tres primeros */
+  .productos:nth-child(1n + 4) {
+    display: none;
+  }
+
+  /* Producto destacado también tomará todo el ancho en su fila, que es la segunda */
+  #producto-destacado {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  #contenido-p-destacado {
+    margin-top: 1rem;
+  }
+
+  /* Zona de contenido 2 */
+  /* En la segunda zona de contenido el titulo del ODS se pasará a minúscula */
+  #main-zona2 > section > h2 {
+    text-transform: lowercase;
+  }
+
+  /* El texto de los párrafos pasarán a estar en una sola columna */
+  #main-zona2 > section {
+    column-count: 1;
+  }
+
+  /* Y se le quitará la letra capital a la primera letra de los párrafos, bajando a su vez el tamaño de fuente */
+  #main-zona2 > section > p::first-letter {
+    font-size: 1rem;
+  }
+
+  /* En las imágenes se quitará la primera con display para que no ocupe espacio */
+  #imagenes-noticia > img:first-child {
+    display: none;
+  }
+
+  /* Y a la que queda se le aumenta un poco el tamaño al establecido anteriormente */
+  #imagenes-noticia > img {
+    width: 80%;
+  }
+
+  /* Pie de página */
+  /* La primera (izquierda) y tercera (derecha) se eliminan por completo con display */
+  #footer-zona1,
+  #footer-zona3 {
+    display: none;
+  }
+
+  /* La segunda zona (centro) pasa a tomar el 95% del ancho de la pantalla */
+  #footer-zona2 {
+    width: 95%;
+  }
+
+  /* Se le quita la viñeta y cambia la orientación, a su vez se achica la fuente */
+  #footer-zona2 li {
+    list-style-type: none;
+    display: inline;
+    font-size: 0.9rem;
+    margin: 0.5rem;
+  }
+
+  /* Al pasar por un elemento de la lista se subrayará */
+  #footer-zona2 li:hover {
+    text-decoration: underline;
+  }
+}
